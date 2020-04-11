@@ -17,24 +17,32 @@
             <h1>🍀 Leaderboard</h1>
         </header>
         <div class="paper container">
-            <ul>
-                <li>(avatar) Name - score - [button] [button]</li>
-            </ul>
-            <div class="row">
-                <div class="col sm-8">
-                    <div class="form-group">
-                        <input class="input-block" type="text"
-                        name="name" placeholder="name">
+            <div class="border-4 border" id="list"></div>
+            <form>
+                <div class="row">
+                    <div class="col sm-8">
+                        <div class="form-group">
+                            <input class="input-block" type="text"
+                            name="name" placeholder="name">
+                        </div>
+                    </div>
+                    <div class="col sm-4">
+                        <div class="form-group">
+                            <button type="submit" class=
+                            "btn-primary">Add</button>
+                        </div>
                     </div>
                 </div>
-                <div class="col sm-4">
-                    <div class="form-group">
-                        <button class="btn-primary">Add</button>
-                    </div>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
+    <script id="list-item" type="text/template">
+      <div style="margin: 1em; padding: 1em;" class="row border border-2">
+        <div class="avatar" style="flex: 2">(avatar)</div>
+        <div class="name" style="flex: 6; font-size: 1.5em;"><strong>{{name}}</strong></div>
+        <div class="buttons" style="flex: 2"><button class="btn-success btn-small">+</button> {{score}} <button class="btn-danger btn-small">-</button></div>
+     </div>
+    </script>
     <script src="js/app.js"></script>
 </body>
 </html>
