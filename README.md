@@ -9,4 +9,4 @@ Leaderboard app using vanilla javascript
 - [ ] favicon libs (show badge)
 - [x] uuid libs / uniq id libs [lil-js/uuid](https://github.com/lil-js/uuid)
 - [x] localstorage libs
-- [ ] Service worker to cache avatar
+- [x] Service worker to cache avatar

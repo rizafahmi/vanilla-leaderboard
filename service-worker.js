@@ -5,6 +5,7 @@ importScripts(
 
 if (workbox) {
   console.log(`Yay! Workbox is loaded 🎉`);
+  workbox.setConfig({ debug: false });
   const {
     precaching,
     routing,
@@ -14,7 +15,6 @@ if (workbox) {
     cacheableResponse
   } = workbox;
 
-  // https://api.adorable.io/avatars/64/Haaris%20Ramadhan.png
   routing.registerRoute(
     new RegExp('^https://api.adorable.io/avatars/64'),
     new strategies.CacheFirst({
@@ -24,6 +24,17 @@ if (workbox) {
           maxEntries: 20,
           maxAgeSeconds: 7 * 24 * 60 * 60
         }),
+        new cacheableResponse.CacheableResponsePlugin({
+          statuses: [0, 200]
+        })
+      ]
+    })
+  );
+  routing.registerRoute(
+    new RegExp('^https://fonts.gstatic.com/s/neucha/v11/'),
+    new strategies.CacheFirst({
+      cacheName: 'font-cache',
+      plugins: [
         new cacheableResponse.CacheableResponsePlugin({
           statuses: [0, 200]
         })
