@@ -8,4 +8,4 @@ Leaderboard app using vanilla javascript
 - [ ] confetti libs
 - [ ] favicon libs (show badge)
 - [x] uuid libs / uniq id libs [lil-js/uuid](https://github.com/lil-js/uuid)
-- [ ] localstorage libs
+- [x] localstorage libs

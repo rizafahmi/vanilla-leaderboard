@@ -1,8 +1,16 @@
-const data = [
-  { id: lil.uuid(), name: 'Dan Abramov', score: 50 },
-  { id: lil.uuid(), name: 'Evan You', score: 30 },
-  { id: lil.uuid(), name: 'Rich Harris', score: 15 }
-];
+const store = new xStore('prefix', localStorage);
+
+// Seed data
+let data = [];
+if (store.get('data').length > 0) {
+  data = store.get('data');
+} else {
+  data = [
+    { id: lil.uuid(), name: 'Dan Abramov', score: 50 },
+    { id: lil.uuid(), name: 'Evan You', score: 30 },
+    { id: lil.uuid(), name: 'Rich Harris', score: 15 }
+  ];
+}
 
 function randomize() {
   return Math.floor(Math.random() * 100);
@@ -10,11 +18,10 @@ function randomize() {
 
 function render() {
   const li = document.getElementById('list-item').innerHTML;
-  let newLi = '';
 
   let newList = data
     .sort((a, b) => parseInt(b.score) - parseInt(a.score))
-    .map((d, i) => {
+    .map((d) => {
       return li
         .replace(/{{id}}/g, d.id)
         .replace(/{{name}}/g, d.name)
@@ -49,6 +56,7 @@ function render() {
 render();
 
 const form = document.querySelector('form');
+
 form.onsubmit = function(event) {
   event.preventDefault();
 
@@ -61,4 +69,11 @@ form.onsubmit = function(event) {
   data.push({ id, name, score });
   nameInput.value = '';
   render();
+};
+
+// Page Visibility API
+document.onvisibilitychange = function() {
+  store.set({
+    data
+  });
 };
