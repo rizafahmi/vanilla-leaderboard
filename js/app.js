@@ -40,7 +40,14 @@ function render() {
       const changeData = data.find((d) => d.id === id);
       const index = data.indexOf(changeData);
       data[index].score = data[index].score + randomize();
+
       render();
+      const container = document.querySelector(`#container-${id}`);
+      container.classList.add('background-secondary');
+
+      setInterval(function() {
+        container.classList.remove('background-secondary');
+      }, 1500);
     };
 
     decrButtons[i].onclick = function() {
@@ -69,6 +76,7 @@ form.onsubmit = function(event) {
   data.push({ id, name, score });
   nameInput.value = '';
   render();
+  confetti.start(1000);
 };
 
 // Page Visibility API
