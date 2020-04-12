@@ -1,14 +1,30 @@
-const store = new xStore('prefix', localStorage);
+const store = new xStore('leaderboard_', localStorage);
 
 // Seed data
 let data = [];
-if (store.get('data').length > 0) {
+const dataFromDb = store.get('data');
+if (dataFromDb && dataFromDb.length > 0) {
   data = store.get('data');
 } else {
   data = [
-    { id: lil.uuid(), name: 'Dan Abramov', score: 50 },
-    { id: lil.uuid(), name: 'Evan You', score: 30 },
-    { id: lil.uuid(), name: 'Rich Harris', score: 15 }
+    {
+      id: lil.uuid(),
+      name: 'Dan Abramov',
+      score: 50,
+      updatedAt: dayjs().toDate()
+    },
+    {
+      id: lil.uuid(),
+      name: 'Evan You',
+      score: 30,
+      updatedAt: dayjs().toDate()
+    },
+    {
+      id: lil.uuid(),
+      name: 'Rich Harris',
+      score: 15,
+      updatedAt: dayjs().toDate()
+    }
   ];
 }
 
@@ -22,9 +38,12 @@ function render() {
   let newList = data
     .sort((a, b) => parseInt(b.score) - parseInt(a.score))
     .map((d) => {
+      dayjs.extend(dayjs_plugin_relativeTime);
+      const daysAgo = dayjs().from(dayjs(d.updatedAt));
       return li
         .replace(/{{id}}/g, d.id)
         .replace(/{{name}}/g, d.name)
+        .replace(/{{daysAgo}}/g, daysAgo)
         .replace(/{{score}}/g, d.score);
     });
 
@@ -40,6 +59,7 @@ function render() {
       const changeData = data.find((d) => d.id === id);
       const index = data.indexOf(changeData);
       data[index].score = data[index].score + randomize();
+      data[index].updatedAt = dayjs();
 
       render();
       const container = document.querySelector(`#container-${id}`);
@@ -55,6 +75,8 @@ function render() {
       const changeData = data.find((d) => d.id === id);
       const index = data.indexOf(changeData);
       data[index].score = data[index].score - randomize();
+      data[index].updatedAt = dayjs();
+
       render();
     };
   }
@@ -72,6 +94,7 @@ form.onsubmit = function(event) {
   const name = nameInput.value;
   const score = randomize();
   const id = lil.uuid();
+  const updatedAt = dayjs().toDate();
 
   data.push({ id, name, score });
   nameInput.value = '';
