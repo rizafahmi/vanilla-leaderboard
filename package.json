@@ -4,13 +4,22 @@
   "description": "Leaderboard app using vanilla javascript",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --config webpack.config.js",
+    "watch": "webpack --config webpack.config.js --mode=development --watch",
+    "start": "npx live-server --no-browser",
+    "dev": "npm run build && npm start"
   },
   "keywords": [],
   "author": "Riza Fahmi <rizafahmi@gmail.com> (https://rizafahmi.com)",
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "7.9.0",
+    "babel-loader": "8.1.0",
+    "confetti-js": "0.0.18",
+    "dayjs": "1.8.24",
+    "lil-uuid": "0.1.1",
     "webpack": "4.42.1",
-    "webpack-cli": "3.3.11"
+    "webpack-cli": "3.3.11",
+    "xStore": "2.0.5"
   }
 }

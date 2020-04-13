@@ -1,3 +1,11 @@
+import { xStore } from 'xStore';
+import lil from 'lil-uuid';
+import dayjs from 'dayjs';
+import ConfettiGenerator from 'confetti-js';
+
+import render from './ui.js';
+import randomize from './utils.js';
+
 const store = new xStore('leaderboard_', localStorage);
 
 // Seed data
@@ -28,24 +36,34 @@ if (dataFromDb && dataFromDb.length > 0) {
   ];
 }
 
-render();
+render(data);
 
 const form = document.querySelector('form');
 
 form.onsubmit = function(event) {
   event.preventDefault();
 
+  const confetti = new ConfettiGenerator({
+    target: 'confetti-canvas',
+    animate: true,
+    width: 800
+  });
+
   const nameInput = document.querySelector('#name');
 
   const name = nameInput.value;
-  const score = Utils.randomize();
+  const score = randomize();
   const id = lil.uuid();
   const updatedAt = dayjs().toDate();
 
   data.push({ id, name, score });
   nameInput.value = '';
-  render();
-  confetti.start(1000);
+  render(data);
+
+  confetti.render();
+  setTimeout(function() {
+    convetti.clear();
+  }, 1000);
 };
 
 // Page Visibility API

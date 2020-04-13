@@ -1,10 +1,15 @@
-function render() {
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+import randomize from './utils.js';
+
+function render(data) {
   const li = document.getElementById('list-item').innerHTML;
 
   let newList = data
     .sort((a, b) => parseInt(b.score) - parseInt(a.score))
     .map((d) => {
-      dayjs.extend(dayjs_plugin_relativeTime);
+      dayjs.extend(relativeTime);
       const daysAgo = dayjs().from(dayjs(d.updatedAt));
       return li
         .replace(/{{id}}/g, d.id)
@@ -24,10 +29,10 @@ function render() {
       const id = incrButtons[i].dataset.id;
       const changeData = data.find((d) => d.id === id);
       const index = data.indexOf(changeData);
-      data[index].score = data[index].score + Utils.randomize();
+      data[index].score = data[index].score + randomize();
       data[index].updatedAt = dayjs();
 
-      render();
+      render(data);
       const container = document.querySelector(`#container-${id}`);
       container.classList.add('background-secondary');
 
@@ -40,10 +45,12 @@ function render() {
       const id = decrButtons[i].dataset.id;
       const changeData = data.find((d) => d.id === id);
       const index = data.indexOf(changeData);
-      data[index].score = data[index].score - Utils.randomize();
+      data[index].score = data[index].score - randomize();
       data[index].updatedAt = dayjs();
 
-      render();
+      render(data);
     };
   }
 }
+
+export default render;
