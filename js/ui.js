@@ -24,7 +24,7 @@ function render() {
       const id = incrButtons[i].dataset.id;
       const changeData = data.find((d) => d.id === id);
       const index = data.indexOf(changeData);
-      data[index].score = data[index].score + randomize();
+      data[index].score = data[index].score + Utils.randomize();
       data[index].updatedAt = dayjs();
 
       render();
@@ -40,7 +40,7 @@ function render() {
       const id = decrButtons[i].dataset.id;
       const changeData = data.find((d) => d.id === id);
       const index = data.indexOf(changeData);
-      data[index].score = data[index].score - randomize();
+      data[index].score = data[index].score - Utils.randomize();
       data[index].updatedAt = dayjs();
 
       render();

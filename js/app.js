@@ -38,7 +38,7 @@ form.onsubmit = function(event) {
   const nameInput = document.querySelector('#name');
 
   const name = nameInput.value;
-  const score = randomize();
+  const score = Utils.randomize();
   const id = lil.uuid();
   const updatedAt = dayjs().toDate();
 
