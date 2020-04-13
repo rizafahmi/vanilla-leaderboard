@@ -1,16 +1,17 @@
-let BasicCalc = (function() {
-  return {
-    add: function(a, b) {
-      return a + b;
-    },
-    sub: function(a, b) {
-      return a - b;
-    },
-    mul: function(a, b) {
-      return a * b;
-    },
-    div: function(a, b) {
-      return a / b;
-    }
-  };
-})();
+function add(a, b) {
+  return a + b;
+}
+
+function sub(a, b) {
+  return a - b;
+}
+
+function mul(a, b) {
+  return a * b;
+}
+
+function div(a, b) {
+  return a / b;
+}
+
+export { add, sub, mul, div };
