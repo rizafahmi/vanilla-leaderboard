@@ -1,7 +1,7 @@
-import { xStore } from 'xStore';
-import lil from 'lil-uuid';
+import uuid from 'lil-uuid';
 import dayjs from 'dayjs';
 import ConfettiGenerator from 'confetti-js';
+import xStore from 'xStore';
 
 import render from './ui.js';
 import randomize from './utils.js';
@@ -16,19 +16,19 @@ if (dataFromDb && dataFromDb.length > 0) {
 } else {
   data = [
     {
-      id: lil.uuid(),
+      id: uuid(),
       name: 'Dan Abramov',
       score: 50,
       updatedAt: dayjs().toDate()
     },
     {
-      id: lil.uuid(),
+      id: uuid(),
       name: 'Evan You',
       score: 30,
       updatedAt: dayjs().toDate()
     },
     {
-      id: lil.uuid(),
+      id: uuid(),
       name: 'Rich Harris',
       score: 15,
       updatedAt: dayjs().toDate()
@@ -46,14 +46,15 @@ form.onsubmit = function(event) {
   const confetti = new ConfettiGenerator({
     target: 'confetti-canvas',
     animate: true,
-    width: 800
+    width: 800,
+    height: document.querySelector('.paper.container').offsetHeight
   });
 
   const nameInput = document.querySelector('#name');
 
   const name = nameInput.value;
   const score = randomize();
-  const id = lil.uuid();
+  const id = uuid();
   const updatedAt = dayjs().toDate();
 
   data.push({ id, name, score });
@@ -61,9 +62,9 @@ form.onsubmit = function(event) {
   render(data);
 
   confetti.render();
-  setTimeout(function() {
-    convetti.clear();
-  }, 1000);
+  setTimeout(() => {
+    confetti.clear();
+  }, 3000);
 };
 
 // Page Visibility API
