@@ -1,6 +1,6 @@
 # 🍀 Leaderboard
 
-Leaderboard app using vanilla javascript
+Leaderboard app using vanilla javascript. Demo create application with and without bundler. For presentation demo at #livecampid http://livecamp.wwwid.org.
 
 ## TODO
 

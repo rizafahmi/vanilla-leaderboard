@@ -1,7 +1,7 @@
-let AdvanceCalc = function() {
-  return {
-    squared: function squared(a) {
-      return a * a;
-    }
-  };
-};
+import { mul } from './basic_calc.js';
+
+function squared(a) {
+  return mul(a, a);
+}
+
+export { squared };
