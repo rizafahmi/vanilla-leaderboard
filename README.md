@@ -2,6 +2,8 @@
 
 Leaderboard app using vanilla javascript. Demo create application with and without bundler. For presentation demo at #livecampid http://livecamp.wwwid.org.
 
+Demo app available at https://vanilla-leaderboard.web.app
+
 ## TODO
 
 - [x] avatar libs

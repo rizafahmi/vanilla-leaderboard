@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>🍀 Leaderboard</title>
+    <meta name="description" content="">
+    <meta name="viewport" content=
+    "width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="paper.min.css">
+</head>
+<body>
+    <div class="paper container">
+        <header style="text-align: center;">
+            <h1>🍀 Leaderboard</h1>
+        </header>
+        <div class="paper container">
+            <canvas id="confetti-canvas" style=
+            "position: absolute"></canvas>
+            <div class="border-4 border" id="list"></div>
+            <form>
+                <div class="row">
+                    <div class="col sm-8">
+                        <div class="form-group">
+                            <input class="input-block" type="text"
+                            name="name" placeholder="name" id=
+                            "name">
+                        </div>
+                    </div>
+                    <div class="col sm-4">
+                        <div class="form-group">
+                            <button type="submit" class=
+                            "btn-primary">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script id="list-item" type="text/template">
+
+      <div id="container-{{id}}" style="margin: 1em; padding: 1em; height: 110px;" class="row border border-2">
+        <div class="avatar" style="flex: 2"><img src="https://api.adorable.io/avatars/64/{{name}}.png" alt="avatar" width="64" height="64"></div>
+        <div class="name" style="flex: 6; align-self: center;"><p style="margin: 0; font-size: 2em;"><strong>{{name}}</strong></p><p class="text-muted" style="margin: 0;">Last updated: {{daysAgo}}.</p></div>
+        <div class="buttons" style="flex: 2; align-self: center;"><button id="incr-{{id}}" class="btn-success btn-small" data-id={{id}}>+</button> {{score}} <button class="btn-danger btn-small" id="decr-{{id}}" data-id={{id}}>-</button></div>
+      </div>
+    </script> <!-- JS Dependencies -->
+
+    <script src="bundle.rollup.js"></script>
+</body>
+</html>
