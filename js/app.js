@@ -61,9 +61,11 @@ form.onsubmit = function(event) {
   nameInput.value = '';
   render(data);
 
+  document.querySelector('#confetti-canvas').style['z-index'] = 1;
   confetti.render();
   setTimeout(() => {
     confetti.clear();
+    document.querySelector('#confetti-canvas').style['z-index'] = -1;
   }, 3000);
 };
 
