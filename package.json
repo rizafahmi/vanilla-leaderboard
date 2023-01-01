@@ -13,13 +13,13 @@
   "author": "Riza Fahmi <rizafahmi@gmail.com> (https://rizafahmi.com)",
   "license": "MIT",
   "dependencies": {
-    "babel-loader": "8.1.0",
+    "babel-loader": "8.3.0",
     "confetti-js": "0.0.18",
     "dayjs": "1.8.24",
     "lil-uuid": "0.1.1",
     "rollup": "2.6.1",
-    "webpack": "4.42.1",
-    "webpack-cli": "3.3.11",
+    "webpack": "5.75.0",
+    "webpack-cli": "5.0.1",
     "xStore": "2.0.5"
   },
   "devDependencies": {
